@@ -6,11 +6,9 @@ const client = sanityClient({
     dataset: 'production',
     useCdn: true,
     apiVersion: '2021-10-21',
-
-
 })
 const builder = imageBuilder(client);
 
-export const urlFor = source=> builder.image(source);
+export const urlFor = source => builder.image(source);
 
 export default client;
