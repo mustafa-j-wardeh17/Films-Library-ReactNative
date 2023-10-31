@@ -6,14 +6,19 @@ import MovieList from '../Components/MovieList/MovieList'
 import CarouselSlider from '../Components/CarouselSlider/CarouselSlider'
 import { useEffect, useState } from 'react'
 import { getFilmRepository } from '../Api/db'
+import { useDispatch, useSelector } from 'react-redux'
+import { setRepository } from '../redux/Movie/MovieSlice'
 const Home = () => {
-    const [Repository, SetRepository] = useState([])
+    const dispatch = useDispatch()
     useEffect(() => {
         getFilmRepository().then((data) => {
-            SetRepository(data)
+            if (data) {
+                dispatch(setRepository(data))
+            }
         })
     }, [])
     const navigation = useNavigation();
+    const Repository = useSelector(state => state.movie.repository)
     return (
         <SafeAreaView style={styles.HomeContainer}>
             <StatusBar style='light' />
@@ -31,15 +36,20 @@ const Home = () => {
             </View>
 
             <ScrollView showsVerticalScrollIndicator={false} >
-                <View>
-                    <CarouselSlider />
-                </View>
-                <View>
-                    <MovieList data={Repository[0]} />
-                </View>
-                <View>
-                    <MovieList data={Repository[1]} />
-                </View>
+                {
+                    Repository ?
+                        <>
+                            <View>
+                                <CarouselSlider />
+                            </View>
+                            <View className='w-full'>
+                                <MovieList seeAll={false} data={Repository[0]} />
+                            </View>
+                            <View className='w-full'>
+                                <MovieList seeAll={false} data={Repository[1]} />
+                            </View>
+                        </> : ''
+                }
             </ScrollView>
         </SafeAreaView>
     )
