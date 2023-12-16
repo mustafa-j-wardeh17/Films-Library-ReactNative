@@ -1,48 +1,77 @@
 import { useNavigation } from '@react-navigation/native'
-import { View, Text, TextInput, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity, Dimensions, Image } from 'react-native'
+import axios from 'axios';
+import { useEffect, useLayoutEffect, useState } from 'react';
+import { View, Text, TextInput, StyleSheet, ScrollView, TouchableOpacity, Dimensions, Image, TouchableWithoutFeedback, Keyboard } from 'react-native'
 import { XMarkIcon } from 'react-native-heroicons/outline'
+import { useDispatch, useSelector } from 'react-redux';
+import { setRepository } from '../redux/Movie/MovieSlice';
 
 
 const { width, height } = Dimensions.get('window');
 
 
 const SearchScreen = () => {
-    let MoveName = 'Ant-Man and the Wasp: Quantumania'
-
-    let SearchNumber = 4
+    const [searchMovies, setSearchMovies] = useState([])
+    const [searchText, setSearchText] = useState('')
     const navigation = useNavigation()
-    const arr = [1, 2, 3, 4, 5, 6, 7, 8]
+    const dispatch = useDispatch()
+    const { repository } = useSelector(state => state.movie)
+    useLayoutEffect(() => {
+        fetchMoviesRepository()
+    }, [])
+
+    const fetchMoviesRepository = async () => {
+        try {
+            const moviesData = await axios.get('http://localhost:3011/movie/getAllMovies')
+            dispatch(setRepository(moviesData.data))
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+    useEffect(() => {
+        setSearchMovies(repository.filter(movie => movie.title.toLowerCase().includes(searchText.toLowerCase())));
+    }, [searchText])
+
     return (
         <View showsVerticalScrollIndicator={false} style={{
             flex: 1, marginTop: 50
         }}>
-            <View style={styles.searchBar}>
-                <TextInput style={styles.SearchInput} placeholderTextColor={'rgba(255,255,255,0.64)'} placeholder='Search Movies' />
-                <TouchableOpacity onPress={() => navigation.goBack()} style={styles.Xicon}>
-                    <XMarkIcon width={30} height={30} color="rgba(255,255,255,0.75)" />
-                </TouchableOpacity>
-            </View>
+            <TouchableWithoutFeedback
+                onPress={() => Keyboard.dismiss}>
+                <View style={styles.searchBar}>
+                    <TextInput
+                        value={searchText}
+                        onChangeText={(e) => setSearchText(e)}
+                        style={styles.SearchInput}
+                        placeholderTextColor={'rgba(255,255,255,0.64)'}
+                        placeholder='Search Movies'
+                    />
+                    <TouchableOpacity onPress={() => navigation.goBack()} style={styles.Xicon}>
+                        <XMarkIcon width={30} height={30} color="rgba(255,255,255,0.75)" />
+                    </TouchableOpacity>
+                </View>
+            </TouchableWithoutFeedback>
             <View style={{ marginTop: 10, marginRight: 60, fontSize: 14, width: '100%', paddingLeft: 12 }}>
                 <Text style={{ color: 'white' }}>
                     Result (
-                    <Text>{arr.length}</Text>
+                    <Text>{searchMovies.length}</Text>
                     )
                 </Text>
             </View>
             <ScrollView showsVerticalScrollIndicator={false} >
                 <View style={{ marginTop: 10, gap: 20, marginHorizontal: 20, fontSize: 14, width: '100%', paddingLeft: 12, flexDirection: 'row', flexWrap: 'wrap' }}>
                     {
-                        arr ?
-                            arr.map((item) => (
-                                <TouchableOpacity key={item} onPress={() => { navigation.navigate('Movie') }} style={styles.card}>
-                                    <Image source={require("../assets/snap.jpg")} style={styles.ImageStyle} />
-                                    <Text numberOfLines={1} style={styles.filmName}>
-                                        {MoveName && MoveName.length > 20 ? MoveName.slice(0, 20) + '...' : MoveName}
-                                    </Text>
-                                </TouchableOpacity>
-                            ))
-                            :
-                            (<Text>sss</Text>)
+
+                        searchMovies?.map((item) => (
+                            <TouchableOpacity key={item._id} onPress={() => { navigation.navigate('Movie', { movie: item }) }} style={styles.card}>
+                                <Image source={{ uri: item.cover.url }} style={styles.ImageStyle} />
+                                <Text numberOfLines={1} style={styles.filmName}>
+                                    {item.title && item.title.length > 20 ? item.title.slice(0, 20) + '...' : item.title}
+                                </Text>
+                            </TouchableOpacity>
+                        ))
+
                     }
                 </View>
             </ScrollView>

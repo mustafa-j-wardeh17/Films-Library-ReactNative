@@ -1,30 +1,33 @@
-import { View, Text, ScrollView, TouchableOpacity, StyleSheet, Image, Dimensions, Pressable } from 'react-native'
+import { View, Text, ScrollView, TouchableOpacity, StyleSheet, Image, Pressable } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
-import { urlFor } from '../../Sanity';
-import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { setSelectedMovie } from '../../redux/Movie/MovieSlice';
+import { useEffect, useLayoutEffect, useState } from 'react';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 
 
-const { width, height } = Dimensions.get('window');
 
-const MovieList = ({ seeAll, data }) => {
+const MovieList = ({ seeAll, data, category }) => {
 
     const navigation = useNavigation();
-    const dispatch = useDispatch()
+    const [movie, setMovie] = useState({})
+    useLayoutEffect(() => {
+        if (seeAll) {
+            setMovie(seeAll)
+        }
+    }, [])
     const handleSelectMovie = (movie) => {
-        navigation.navigate('Movie')
-        dispatch(setSelectedMovie(movie))
+        navigation.navigate('Movie', {
+            movie: movie
+        })
     }
 
     return (
         <View style={{ marginBottom: 20 }}>
             <View style={styles.ListHeader}>
-                <Text style={styles.TextStyle}>
+                <Text style={{ fontSize: wp(5), color: 'white',textTransform:"capitalize" }} >
                     {
-                        data?.films ?
-                            data?.name
+                        data ?
+                            category + ' movies'
                             : 'Related Movies'
                     }
                 </Text>
@@ -40,33 +43,34 @@ const MovieList = ({ seeAll, data }) => {
 
                 </Pressable>
             </View>
-            <ScrollView horizontal
+            <ScrollView
+                horizontal
                 showsHorizontalScrollIndicator={false}
+                contentContainerStyle={styles.ScrollStyle}
             >
-                <View className='flex-row mx-2 space-x-5'>
-                    {
-                        data.films ?
-                            data?.films?.map((movie) => (
-                                <TouchableOpacity onPress={() => handleSelectMovie(movie)} key={movie._id} style={styles.card}>
-                                    <View className='shadow  ' style={styles.ImageStyle}>
-                                        <Image source={{ uri: urlFor(movie.image).url() }}   style={styles.ImageStyle}/>
-                                    </View>
-                                    <Text numberOfLines={1} className='ml-2' style={styles.filmName}>
-                                        {movie?.name.length > 20 ? movie?.name.slice(0, 20) + '...' : movie?.name}
-                                    </Text>
-                                </TouchableOpacity>
-                            ))
-                            :
-                            data?.related?.map((movie) => (
-                                <TouchableOpacity onPress={() => handleSelectMovie(movie)} key={movie._id} style={styles.card}>
-                                    <Image source={{ uri: urlFor(movie.image).url() }} style={styles.ImageStyle} />
-                                    <Text numberOfLines={1} className='ml-4' style={styles.filmName}>
-                                        {movie?.name.length > 20 ? movie?.name.slice(0, 20) + '...' : movie?.name}
-                                    </Text>
-                                </TouchableOpacity>
-                            ))
-                    }
-                </View>
+                {
+                    data?.map((movie) => (
+                        <TouchableOpacity
+                            style={{ width: seeAll ? wp(30) : wp(40) }}
+                            onPress={() => handleSelectMovie(movie)}
+                            key={movie._id}
+                            className='flex flex-col'
+                        >
+                            <View className='shadow w-full'>
+                                <Image
+                                    style={{ height: seeAll ? hp(20) : hp(35), borderRadius: wp(4), overflow: 'hidden' }}
+                                    source={{ uri: movie.cover.url }}
+                                    className='w-full'
+                                    resizeMode='stretch'
+                                />
+                            </View>
+                            <Text numberOfLines={1} className='text-center' style={styles.filmName}>
+                                {movie?.title.length > 20 ? movie?.title.slice(0, 20) + '...' : movie?.title}
+                            </Text>
+                        </TouchableOpacity>
+                    ))
+                }
+
             </ScrollView>
         </View>
     )
@@ -81,30 +85,33 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: 12,
-        marginLeft: 15
+        marginHorizontal: wp(1.4),
+        marginBottom: hp(2)
     },
     TextStyle: {
         color: 'white',
-        fontSize: 18,
-        fontWeight: '600'
+        fontSize: wp(3),
+        fontWeight: '600',
+        textTransform: "capitalize"
 
     },
     SeconderyColor: {
         color: 'orange',
-        fontSize: 15
+        fontSize: wp(4),
+    },
+    ScrollStyle: {
+        flexDirection: 'row',
+        gap: 20,
+        marginHorizontal: wp(4)
     },
     card: {
-        overflow: 'hidden'
+        overflow: 'hidden',
     },
     filmName: {
         color: 'rgba(255,255,255,0.675)',
         textAlignVertical: 'bottom',
-        marginTop: 10
+        marginTop: 10,
+        fontSize: wp(3.1)
     },
-    ImageStyle: {
 
-        borderRadius: 20,
-        height: 250,
-        width: 180
-    }
 })

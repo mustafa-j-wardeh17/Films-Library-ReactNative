@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, Dimensions, TouchableWithoutFeedback, Image } from 'react-native'; // Import Image from 'react-native'
 import { useNavigation } from '@react-navigation/native';
 
-export default function CarouselSlider() {
+export default function CarouselSlider({data}) {
     const navigation = useNavigation();
     var { width, height } = Dimensions.get('window');
 

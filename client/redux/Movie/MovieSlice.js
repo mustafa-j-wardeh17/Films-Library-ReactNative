@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     repository: [],
-    selectedMovie: [],
+    selectedMovie: {},
     selectedPerson: []
 }
 
