@@ -24,11 +24,11 @@ const MovieList = ({ seeAll, data, category }) => {
     return (
         <View style={{ marginBottom: 20 }}>
             <View style={styles.ListHeader}>
-                <Text style={{ fontSize: wp(5), color: 'white',textTransform:"capitalize" }} >
+                <Text style={{ fontSize: wp(5), color: 'white', textTransform: "capitalize" }} >
                     {
-                        data ?
-                            category + ' movies'
-                            : 'Related Movies'
+                        data.length > 0 &&
+                        category + ' movies'
+
                     }
                 </Text>
                 <Pressable>

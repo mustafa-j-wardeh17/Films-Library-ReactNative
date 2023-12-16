@@ -51,7 +51,7 @@ const Movie = () => {
         >
 
             <View className='h-full relative ' >
-                <View className='flex-1' style={{ height: hp(50) }} >
+                <View className='flex-1' >
                     <View style={{ position: 'absolute', zIndex: 99, padding: 10, flexDirection: 'row',marginTop:hp(5), justifyContent: 'space-between', alignItems: 'center', width: '100%', height: 60, backgroundColor: 'transparent', top: 0 }}>
 
                         <TouchableOpacity onPress={() => navigation.goBack()} style={{ borderRadius: wp(2), padding:5, backgroundColor: 'orange', zIndex: 10 }}>

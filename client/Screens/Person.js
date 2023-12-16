@@ -15,7 +15,7 @@ const Person = () => {
   const navigation = useNavigation()
   useEffect(() => {
     fetchCastsAndRelated()
-  }, [person])
+  }, [])
 
   const fetchCastsAndRelated = async () => {
     try {
@@ -40,8 +40,8 @@ const Person = () => {
           )
           : (
             <View style={{ flex: 1 }}>
-              <View style={{ position: 'absolute', zIndex: 99, padding: 10,marginTop:hp(5), flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%', height: 60, backgroundColor: 'transparent', top: 0 }}>
-                <TouchableOpacity onPress={() => navigation.goBack()} style={{ borderRadius: wp(2), padding:5,backgroundColor: 'orange', zIndex: 10 }}>
+              <View style={{ position: 'absolute', zIndex: 99, padding: 10, marginTop: hp(5), flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%', height: 60, backgroundColor: 'transparent', top: 0 }}>
+                <TouchableOpacity onPress={() => navigation.goBack()} style={{ borderRadius: wp(2), padding: 5, backgroundColor: 'orange', zIndex: 10 }}>
                   <ArrowSmallLeftIcon size={wp(6)} color='white' strokeWidth={2} />
                 </TouchableOpacity>
               </View>
@@ -51,36 +51,36 @@ const Person = () => {
                 </View>
                 <View style={styles.characterName}>
                   <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 32 }}>{person?.name}</Text>
-                  <Text style={{ color: 'gray', fontWeight: '400', fontSize: 16 }}>Location</Text>
+                  <Text style={{ color: 'gray', fontWeight: '400', fontSize: wp(3) }}>Location</Text>
                 </View>
                 <View style={styles.details} className='shadow-xl'>
                   <View style={{ borderRightColor: 'gray', width: wp(22), borderRightWidth: 2 }}>
-                    <Text style={{ textAlign: 'center', fontSize: 16, color: 'white' }}>Gender</Text>
-                    <Text style={{ textAlign: 'center', color: 'gray' }}>{person?.gender}</Text>
+                    <Text style={{ textAlign: 'center', fontSize: wp(3), color: 'white' }}>Gender</Text>
+                    <Text style={{ textAlign: 'center', color: 'gray', fontSize: wp(2.78) }}>{person?.gender}</Text>
                   </View>
                   <View style={{ borderRightColor: 'gray', width: wp(22), borderRightWidth: 2 }}>
-                    <Text style={{ textAlign: 'center', fontSize: 16, color: 'white' }}>Birthday</Text>
-                    <Text style={{ textAlign: 'center', color: 'gray' }}>25-9-1980</Text>
+                    <Text style={{ textAlign: 'center', fontSize: wp(3), color: 'white' }}>Birthday</Text>
+                    <Text style={{ textAlign: 'center', color: 'gray', fontSize: wp(2.78) }}>25-9-1980</Text>
                   </View>
                   <View style={{ borderRightColor: 'gray', width: wp(22), borderRightWidth: 2 }}>
-                    <Text style={{ textAlign: 'center', fontSize: 16, color: 'white' }}>Known for</Text>
-                    <Text style={{ textAlign: 'center', color: 'gray' }}>{person?.knownAt}</Text>
+                    <Text style={{ textAlign: 'center', fontSize: wp(3), color: 'white' }}>Known for</Text>
+                    <Text style={{ textAlign: 'center', color: 'gray', fontSize: wp(2.78) }}>{person?.knownAt}</Text>
                   </View>
                   <View style={{ width: wp(22) }}>
-                    <Text style={{ textAlign: 'center', fontSize: 16, color: 'white' }}>Popularity</Text>
-                    <Text style={{ textAlign: 'center', color: 'gray' }}>{person?.popularity}%</Text>
+                    <Text style={{ textAlign: 'center', fontSize: wp(3), color: 'white' }}>Popularity</Text>
+                    <Text style={{ textAlign: 'center', color: 'gray', fontSize: wp(2.78) }}>{person?.popularity}%</Text>
                   </View>
                 </View>
               </View>
 
               <View style={styles.biography}>
-                <Text style={{ fontSize: 20, color: 'white' }}>Biography</Text>
-                <Text style={{ fontSize: 14, color: 'gray' }}>
+                <Text style={{ fontSize: wp(3.5), fontWeight: "bold", color: 'white' }}>Biography</Text>
+                <Text style={{ fontSize: wp(3.2), color: 'gray' }}>
                   Fusce leo ante, tristique ac sagittis et, rhoncus accumsan libero. Maecenas at metus ullamcorper tortor ultricies bibendum nec quis nisi. Aenean quis velit sed metus ullamcorper auctor eu efficitur orci. Vivamus fringilla sagittis arcu nec iaculis. Etiam vel orci efficitur, sollicitudin magna ac, accumsan sem. Sed cursus, metus nec efficitur condimentum, nulla mauris bibendum diam, et tincidunt enim libero vitae lacus. Etiam sed ultricies nulla.
                 </Text>
               </View>
               <View className='w-full'>
-                <MovieList seeAll={true} data={relatedMovies} category={person.knownAt} />
+                <MovieList seeAll={true} data={relatedMovies} category={'Related'} />
 
               </View>
             </View>

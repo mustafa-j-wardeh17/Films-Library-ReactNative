@@ -24,11 +24,11 @@ const Cast = ({ casts }) => {
             >
                 {
                     casts?.map((cast) => (
-                        <TouchableOpacity onPress={() => handleSelectPerson(cast)} key={cast._id} style={{ width: wp(25) }} className=''>
+                        <TouchableOpacity onPress={() => handleSelectPerson(cast)} key={cast._id} style={{ width: wp(25) ,alignItems:"center" }} className=''>
                             <View style={{ width: wp(20), height: wp(20) }} >
                                 <Image source={{ uri: cast.image.url }} style={{ width: wp(20), height: wp(20),borderRadius:wp(50) }} resizeMode='cover' />
                             </View>
-                            <Text numberOfLines={1} style={{textAlign:"center",color:"rgba(255,255,255,0.8)"}} >
+                            <Text numberOfLines={1} style={{textAlign:"center",color:"rgba(255,255,255,0.8)",fontSize:wp(2.7)}} >
                                 {cast.name.length > 14 ? cast.name.slice(0, 12) + '...' : cast.name}
                             </Text>
                         </TouchableOpacity>
