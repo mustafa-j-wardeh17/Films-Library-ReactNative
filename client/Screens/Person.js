@@ -3,7 +3,7 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp, heightPercentageToDP } from 'react-native-responsive-screen';
 import { ArrowSmallLeftIcon } from 'react-native-heroicons/solid'
 import MovieList from '../Components/MovieList/MovieList';
-import { useLayoutEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Loader from '../Components/Loader';
 
@@ -13,14 +13,14 @@ const Person = () => {
   const [relatedMovies, setRelatedMovies] = useState([])
   const [loader, setLoader] = useState(true)
   const navigation = useNavigation()
-  useLayoutEffect(() => {
+  useEffect(() => {
     fetchCastsAndRelated()
   }, [person])
 
   const fetchCastsAndRelated = async () => {
     try {
       setLoader(true)
-      const related = await axios.get(`http://localhost:3011/movie/getRelatedMovies?relatedMovies=${person.movies}`)
+      const related = await axios.get(`http://192.168.137.1:3011/movie/getRelatedMovies?relatedMovies=${person.movies}`)
       setRelatedMovies(related.data)
       setLoader(false)
     }
@@ -40,8 +40,8 @@ const Person = () => {
           )
           : (
             <View style={{ flex: 1 }}>
-              <View style={{ position: 'absolute', zIndex: 99, padding: 10, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%', height: 60, backgroundColor: 'transparent', top: 0 }}>
-                <TouchableOpacity onPress={() => navigation.goBack()} style={{ borderRadius: wp(2), backgroundColor: 'orange', zIndex: 10 }}>
+              <View style={{ position: 'absolute', zIndex: 99, padding: 10,marginTop:hp(5), flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%', height: 60, backgroundColor: 'transparent', top: 0 }}>
+                <TouchableOpacity onPress={() => navigation.goBack()} style={{ borderRadius: wp(2), padding:5,backgroundColor: 'orange', zIndex: 10 }}>
                   <ArrowSmallLeftIcon size={wp(6)} color='white' strokeWidth={2} />
                 </TouchableOpacity>
               </View>

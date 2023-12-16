@@ -1,15 +1,12 @@
-import { View, Text, ScrollView, TouchableOpacity, StyleSheet, Image, Dimensions } from 'react-native'
+import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
-import { setSelectedPerson } from '../../redux/Movie/MovieSlice';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp, heightPercentageToDP } from 'react-native-responsive-screen';
 
 
 
 const Cast = ({ casts }) => {
     const navigation = useNavigation();
-    const dispatch = useDispatch()
-
     const handleSelectPerson = (person) => {
         navigation.navigate('Person',{person})
     }

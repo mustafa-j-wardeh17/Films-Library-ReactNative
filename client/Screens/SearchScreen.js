@@ -5,6 +5,7 @@ import { View, Text, TextInput, StyleSheet, ScrollView, TouchableOpacity, Dimens
 import { XMarkIcon } from 'react-native-heroicons/outline'
 import { useDispatch, useSelector } from 'react-redux';
 import { setRepository } from '../redux/Movie/MovieSlice';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp, heightPercentageToDP } from 'react-native-responsive-screen';
 
 
 const { width, height } = Dimensions.get('window');
@@ -22,7 +23,7 @@ const SearchScreen = () => {
 
     const fetchMoviesRepository = async () => {
         try {
-            const moviesData = await axios.get('http://localhost:3011/movie/getAllMovies')
+            const moviesData = await axios.get('http://192.168.137.1:3011/movie/getAllMovies')
             dispatch(setRepository(moviesData.data))
         }
         catch (error) {
@@ -47,7 +48,7 @@ const SearchScreen = () => {
                         placeholderTextColor={'rgba(255,255,255,0.64)'}
                         placeholder='Search Movies'
                     />
-                    <TouchableOpacity onPress={() => navigation.goBack()} style={styles.Xicon}>
+                    <TouchableOpacity onPress={() => {navigation.goBack();setSearchText('')}} style={styles.Xicon}>
                         <XMarkIcon width={30} height={30} color="rgba(255,255,255,0.75)" />
                     </TouchableOpacity>
                 </View>
@@ -64,7 +65,7 @@ const SearchScreen = () => {
                     {
 
                         searchMovies?.map((item) => (
-                            <TouchableOpacity key={item._id} onPress={() => { navigation.navigate('Movie', { movie: item }) }} style={styles.card}>
+                            <TouchableOpacity key={item._id} onPress={() => { navigation.navigate('Movie', { movie: item }) ;setSearchText('')}} style={styles.card}>
                                 <Image source={{ uri: item.cover.url }} style={styles.ImageStyle} />
                                 <Text numberOfLines={1} style={styles.filmName}>
                                     {item.title && item.title.length > 20 ? item.title.slice(0, 20) + '...' : item.title}
@@ -89,20 +90,21 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         marginTop: 20,
+        marginHorizontal:wp(3),
         gap: 10,
         borderWidth: 2,
         borderBlockColor: 'rgba(255,255,255,0.2)',
         borderRadius: width * 0.5,
         overflow: 'hidden',
-        height: 50,
+        height: 40,
 
     },
     Xicon: {
         position: 'absolute',
         right: 6,
         backgroundColor: 'gray',
-        width: 40,
-        height: 40,
+        width: 30,
+        height: 30,
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 1000

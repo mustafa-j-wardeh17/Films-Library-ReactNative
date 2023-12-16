@@ -3,7 +3,7 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import { ArrowSmallLeftIcon, HeartIcon } from 'react-native-heroicons/solid'
 import MovieList from '../Components/MovieList/MovieList';
 import Cast from '../Components/Cast/Cast';
-import { useLayoutEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp, heightPercentageToDP } from 'react-native-responsive-screen';
 import { LinearGradient } from 'expo-linear-gradient';
 import axios from 'axios';
@@ -19,14 +19,14 @@ const Movie = () => {
     const [loader, setLoader] = useState(true)
     const [casts, setCasts] = useState([])
     const [relatedMovies, setRelatedMovies] = useState([])
-    useLayoutEffect(() => {
+    useEffect(() => {
         fetchCastsAndRelated()
     }, [movie])
     const fetchCastsAndRelated = async () => {
         try {
             setLoader(true)
-            const casts = await axios.get(`http://localhost:3011/cast/getcasts?movies=${movie.title}`)
-            const related = await axios.get(`http://localhost:3011/movie/getRelatedMovies?relatedMovies=${movie.relatedMovies}`)
+            const casts = await axios.get(`http://192.168.137.1:3011/cast/getcasts?movies=${movie.title}`)
+            const related = await axios.get(`http://192.168.137.1:3011/movie/getRelatedMovies?relatedMovies=${movie.relatedMovies}`)
             if (related.data.length > 0) {
                 let newArray = []
                 for (let i = 0; i < related.data.length; i++) {
@@ -52,9 +52,9 @@ const Movie = () => {
 
             <View className='h-full relative ' >
                 <View className='flex-1' style={{ height: hp(50) }} >
-                    <View style={{ position: 'absolute', zIndex: 99, padding: 10, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%', height: 60, backgroundColor: 'transparent', top: 0 }}>
+                    <View style={{ position: 'absolute', zIndex: 99, padding: 10, flexDirection: 'row',marginTop:hp(5), justifyContent: 'space-between', alignItems: 'center', width: '100%', height: 60, backgroundColor: 'transparent', top: 0 }}>
 
-                        <TouchableOpacity onPress={() => navigation.goBack()} style={{ borderRadius: wp(2), backgroundColor: 'orange', zIndex: 10 }}>
+                        <TouchableOpacity onPress={() => navigation.goBack()} style={{ borderRadius: wp(2), padding:5, backgroundColor: 'orange', zIndex: 10 }}>
                             <ArrowSmallLeftIcon size={wp(6)} color='white' strokeWidth={2} />
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => SetFav((!Fav))} >

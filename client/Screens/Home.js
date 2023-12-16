@@ -3,8 +3,7 @@ import { MagnifyingGlassIcon, Bars3CenterLeftIcon } from 'react-native-heroicons
 import { StatusBar } from 'expo-status-bar'
 import { useNavigation } from '@react-navigation/native'
 import MovieList from '../Components/MovieList/MovieList'
-import { useEffect, useLayoutEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useEffect, useState } from 'react'
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import axios from 'axios'
 import Loader from '../Components/Loader'
@@ -20,9 +19,9 @@ const Home = () => {
 
     const importMovies = async () => {
         try {
-            const actionData = await axios.get('http://localhost:3011/movie/getmovies?category=action')
+            const actionData = await axios.get('http://192.168.137.1:3011/movie/getmovies?category=action')
             setActionMovies(actionData.data)
-            const comedyData = await axios.get('http://localhost:3011/movie/getmovies?category=comedy')
+            const comedyData = await axios.get('http://192.168.137.1:3011/movie/getmovies?category=comedy')
             setComedyMovies(comedyData.data)
             SetLoader(false)
         }
@@ -33,20 +32,19 @@ const Home = () => {
     }
 
     const navigation = useNavigation();
-    const Repository = useSelector(state => state.movie.repository)
     return (
         <View style={styles.HomeContainer}>
             <StatusBar style='light' />
 
             <View style={styles.HeaderContainer}>
                 <TouchableOpacity >
-                    <Bars3CenterLeftIcon size={wp(5)} strokeWidth={2} color="white" />
+                    <Bars3CenterLeftIcon size={wp(7)} strokeWidth={2} color="white" />
                 </TouchableOpacity>
                 <Text style={styles.TextStyle}>
                     <Text style={{ color: 'orange' }}>M</Text>ovies
                 </Text>
                 <TouchableOpacity onPress={() => navigation.navigate('SearchScreen')}>
-                    <MagnifyingGlassIcon size={wp(5)} strokeWidth={2} color="white" />
+                    <MagnifyingGlassIcon size={wp(7)} strokeWidth={2} color="white" />
                 </TouchableOpacity>
             </View>
 

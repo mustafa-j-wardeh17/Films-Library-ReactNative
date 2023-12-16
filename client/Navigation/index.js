@@ -12,7 +12,7 @@ const Navigation = () => {
 
     return (
         <NavigationContainer>
-                <Stack.Navigator initialRouteName='Home' screenOptions={{ headerShown: false, contentStyle: { backgroundColor: 'rgba(0,0,0,0.85)' } }}>
+                <Stack.Navigator initialRouteName='Home' screenOptions={{ headerShown: false,gestureEnabled:"false", contentStyle: { backgroundColor: 'rgba(0,0,0,0.85)' } }}>
                     <Stack.Screen name="Home" component={Home} />
                     <Stack.Screen name="Movie" component={Movie} />
                     <Stack.Screen name="SearchScreen" component={SearchScreen} />
