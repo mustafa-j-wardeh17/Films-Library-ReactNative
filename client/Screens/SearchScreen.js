@@ -96,15 +96,15 @@ const styles = StyleSheet.create({
         borderBlockColor: 'rgba(255,255,255,0.2)',
         borderRadius: width * 0.5,
         overflow: 'hidden',
-        height: 40,
+        height:hp(5),
 
     },
     Xicon: {
         position: 'absolute',
         right: 6,
         backgroundColor: 'gray',
-        width: 30,
-        height: 30,
+        width: hp(4),
+        height: hp(4),
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 1000
