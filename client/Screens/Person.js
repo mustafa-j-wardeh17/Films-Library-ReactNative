@@ -6,6 +6,7 @@ import MovieList from '../Components/MovieList/MovieList';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Loader from '../Components/Loader';
+import { LinearGradient } from 'expo-linear-gradient';
 
 const Person = () => {
   const route = useRoute()
@@ -20,7 +21,7 @@ const Person = () => {
   const fetchCastsAndRelated = async () => {
     try {
       setLoader(true)
-      const related = await axios.get(`http://192.168.137.1:3011/movie/getRelatedMovies?relatedMovies=${person.movies}`)
+      const related = await axios.get(`http://192.168.1.198:3011/movie/getRelatedMovies?relatedMovies=${person.movies}`)
       setRelatedMovies(related.data)
       setLoader(false)
     }
@@ -46,12 +47,18 @@ const Person = () => {
                 </TouchableOpacity>
               </View>
               <View style={styles.PesronContainer} >
-                <View >
-                  <Image source={{ uri: person.image.url }} style={{ width: wp(100), aspectRatio: '9/12', borderBottomLeftRadius: wp(8), borderBottomRightRadius: wp(8) }} />
+                <View className='items-center justify-center rounded-full  w-full' style={{ height: hp(40), width: hp(40) }}>
+                  <Image source={{ uri: person.image.url }} style={{ width: hp(26), aspectRatio: '9/9' }} className='rounded-full shadow-2xl shadow-black' />
+                  <LinearGradient
+                    colors={['rgba(30, 31, 33, 1)','rgba(151, 156, 173, 1)', 'rgba(248, 252, 247, 1)','rgba(30, 31, 33, 1)']}
+                    style={{ width: hp(28), aspectRatio: '9/9',zIndex: -1, position: 'absolute'}}
+                    className='rounded-full transform -translate-y-[50%] '
+                    start={{ x: 0.8, y: 0 }}
+                    end={{ x: 0.26, y: 1 }}
+                  />
                 </View>
                 <View style={styles.characterName}>
-                  <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 32 }}>{person?.name}</Text>
-                  <Text style={{ color: 'gray', fontWeight: '400', fontSize: wp(3) }}>Location</Text>
+                  <Text style={{ color: 'white', fontWeight: 'bold', fontSize: wp(5) }}>{person?.name}</Text>
                 </View>
                 <View style={styles.details} className='shadow-xl'>
                   <View style={{ borderRightColor: 'gray', width: wp(22), borderRightWidth: 2 }}>

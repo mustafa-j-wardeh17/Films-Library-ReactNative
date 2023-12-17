@@ -6,6 +6,7 @@ import castRouter from './Routers/castRouter.js'
 import movieRouter from './Routers/movieRouter.js'
 import { errorHandler, notFoundPage } from './Middleware/errors.js'
 import { Logger } from './Middleware/logger.js'
+import authRouter from './Routers/authRouter.js'
 
 dotenv.config()
 
@@ -33,7 +34,7 @@ app.use(Logger)
 // -------------------------------
 // ------------ Router -----------
 // -------------------------------
-
+app.use('/auth', authRouter)
 app.use('/cast', castRouter)
 app.use('/movie', movieRouter)
 

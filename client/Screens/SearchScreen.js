@@ -23,8 +23,9 @@ const SearchScreen = () => {
 
     const fetchMoviesRepository = async () => {
         try {
-            const moviesData = await axios.get('http://192.168.137.1:3011/movie/getAllMovies')
+            const moviesData = await axios.get('http://192.168.1.198:3011/movie/getAllMovies')
             dispatch(setRepository(moviesData.data))
+            setSearchMovies(moviesData.data)
         }
         catch (error) {
             console.log(error)
@@ -48,12 +49,12 @@ const SearchScreen = () => {
                         placeholderTextColor={'rgba(255,255,255,0.64)'}
                         placeholder='Search Movies'
                     />
-                    <TouchableOpacity onPress={() => {navigation.goBack();setSearchText('')}} style={styles.Xicon}>
+                    <TouchableOpacity onPress={() => { navigation.goBack(); setSearchText('') }} style={styles.Xicon}>
                         <XMarkIcon width={30} height={30} color="rgba(255,255,255,0.75)" />
                     </TouchableOpacity>
                 </View>
             </TouchableWithoutFeedback>
-            <View style={{ marginTop: 10, marginRight: 60, fontSize: 14, width: '100%', paddingLeft: 12 }}>
+            <View style={{ marginTop: 10, marginHorizontal: wp(3), fontSize: 14, width: '100%', paddingLeft: 12 }}>
                 <Text style={{ color: 'white' }}>
                     Result (
                     <Text>{searchMovies.length}</Text>
@@ -61,14 +62,14 @@ const SearchScreen = () => {
                 </Text>
             </View>
             <ScrollView showsVerticalScrollIndicator={false} >
-                <View style={{ marginTop: 10, gap: 20, marginHorizontal: 20, fontSize: 14, width: '100%', paddingLeft: 12, flexDirection: 'row', flexWrap: 'wrap' }}>
+                <View style={{ marginTop: 10, gap: 10, marginHorizontal: wp(3), fontSize: 14, width: '100%', paddingLeft: 12, flexDirection: 'row', flexWrap: 'wrap' }}>
                     {
 
                         searchMovies?.map((item) => (
-                            <TouchableOpacity key={item._id} onPress={() => { navigation.navigate('Movie', { movie: item }) ;setSearchText('')}} style={styles.card}>
+                            <TouchableOpacity key={item._id} onPress={() => { navigation.navigate('Movie', { movie: item }); setSearchText('') }} style={styles.card}>
                                 <Image source={{ uri: item.cover.url }} style={styles.ImageStyle} />
                                 <Text numberOfLines={1} style={styles.filmName}>
-                                    {item.title && item.title.length > 20 ? item.title.slice(0, 20) + '...' : item.title}
+                                    {item.title && item.title.length > 12 ? item.title.slice(0, 12) + '...' : item.title}
                                 </Text>
                             </TouchableOpacity>
                         ))
@@ -90,13 +91,13 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         marginTop: 20,
-        marginHorizontal:wp(3),
+        marginHorizontal: wp(3),
         gap: 10,
         borderWidth: 2,
         borderBlockColor: 'rgba(255,255,255,0.2)',
         borderRadius: width * 0.5,
         overflow: 'hidden',
-        height:hp(5),
+        height: hp(5),
 
     },
     Xicon: {

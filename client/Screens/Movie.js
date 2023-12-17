@@ -25,8 +25,8 @@ const Movie = () => {
     const fetchCastsAndRelated = async () => {
         try {
             setLoader(true)
-            const casts = await axios.get(`http://192.168.137.1:3011/cast/getcasts?movies=${movie.title}`)
-            const related = await axios.get(`http://192.168.137.1:3011/movie/getRelatedMovies?relatedMovies=${movie.relatedMovies}`)
+            const casts = await axios.get(`http://192.168.1.198:3011/cast/getcasts?movies=${movie.title}`)
+            const related = await axios.get(`http://192.168.1.198:3011/movie/getRelatedMovies?relatedMovies=${movie.relatedMovies}`)
             if (related.data.length > 0) {
                 let newArray = []
                 for (let i = 0; i < related.data.length; i++) {
