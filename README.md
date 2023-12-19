@@ -1,5 +1,5 @@
 # IMDb Mobile Application
-![Project Image 1]([[https://example.com/path/to/image1.jpg](https://res.cloudinary.com/dsos2uuov/image/upload/v1703008824/IMDb%20Project%20Image%20Done/6_b4pwmt.jpg)])
+![Project Image 1]([(https://res.cloudinary.com/dsos2uuov/image/upload/v1703008824/IMDb%20Project%20Image%20Done/6_b4pwmt.jpg)])
 *Login Page*
 
 
