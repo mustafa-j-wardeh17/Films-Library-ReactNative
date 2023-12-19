@@ -1,36 +1,29 @@
 # IMDb Mobile Application
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
-
     <div style="text-align: center;">
         <img src="https://res.cloudinary.com/dsos2uuov/image/upload/v1703008824/IMDb%20Project%20Image%20Done/6_b4pwmt.jpg" alt="Login Page" width="320" height="600" />
         <p>Login Page</p>
     </div>
-
     <div style="text-align: center;">
         <img src="https://res.cloudinary.com/dsos2uuov/image/upload/v1703008824/IMDb%20Project%20Image%20Done/6_b4pwmt.jpg" alt="Register Page" width="320" height="600" />
         <p>Register Page</p>
     </div>
-
     <div style="text-align: center;">
         <img src="https://res.cloudinary.com/dsos2uuov/image/upload/v1703008824/IMDb%20Project%20Image%20Done/6_b4pwmt.jpg" alt="Main Page" width="320" height="600" />
         <p>Main Page</p>
     </div>
-
     <div style="text-align: center;">
         <img src="https://res.cloudinary.com/dsos2uuov/image/upload/v1703008824/IMDb%20Project%20Image%20Done/6_b4pwmt.jpg" alt="Search Page" width="320" height="600" />
         <p>Search Page</p>
     </div>
-
     <div style="text-align: center;">
         <img src="https://res.cloudinary.com/dsos2uuov/image/upload/v1703008824/IMDb%20Project%20Image%20Done/6_b4pwmt.jpg" alt="Movie Page" width="320" height="600" />
         <p>Movie Page</p>
     </div>
-
     <div style="text-align: center;">
         <img src="https://res.cloudinary.com/dsos2uuov/image/upload/v1703008824/IMDb%20Project%20Image%20Done/6_b4pwmt.jpg" alt="Cast Page" width="320" height="600" />
         <p>Cast Page</p>
     </div>
-
 </div>
 
 
