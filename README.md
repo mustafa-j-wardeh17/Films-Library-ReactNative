@@ -1,4 +1,7 @@
 # IMDb Mobile Application
+![Project Image 1]([[https://example.com/path/to/image1.jpg](https://res.cloudinary.com/dsos2uuov/image/upload/v1703008824/IMDb%20Project%20Image%20Done/6_b4pwmt.jpg)])
+*Login Page*
+
 
 ## Overview
 This is a simple IMDb-like mobile application built using React Native for the front end and Express for the backend. The application allows users to browse a list of movies, search for movies, and view details about each movie. It also includes user authentication and authorization using JWT tokens, bcrypt for password hashing, and input validation using Joi. MongoDB is used to store data with separate models for movies and users.
