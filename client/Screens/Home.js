@@ -25,14 +25,14 @@ const Home = () => {
         try {
             const data = await AsyncStorage.getItem('token')
             console.log(data)
-            if (!data) {
+            if (!data || data===null) {
                 setMenuState(false)
                 return navigation.navigate('Login')
             }
             setToken(data)
-            const actionData = await axios.get('http://192.168.1.198:3011/movie/getmovies?category=action')
+            const actionData = await axios.get(`/movie/getmovies?category=action`)
             setActionMovies(actionData.data)
-            const comedyData = await axios.get('http://192.168.1.198:3011/movie/getmovies?category=comedy')
+            const comedyData = await axios.get(`/movie/getmovies?category=comedy`)
             setComedyMovies(comedyData.data)
             SetLoader(false)
         }

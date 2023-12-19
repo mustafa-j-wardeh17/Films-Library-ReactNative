@@ -21,7 +21,7 @@ const Person = () => {
   const fetchCastsAndRelated = async () => {
     try {
       setLoader(true)
-      const related = await axios.get(`http://192.168.1.198:3011/movie/getRelatedMovies?relatedMovies=${person.movies}`)
+      const related = await axios.get(`/movie/getRelatedMovies?relatedMovies=${person.movies}`)
       setRelatedMovies(related.data)
       setLoader(false)
     }

@@ -18,14 +18,14 @@ const LoginScreen = () => {
     const handleLogin = async () => {
         try {
             SetLoader(true)
-            const response = await axios.post('http://192.168.1.198:3011/auth/login', {
+            const response = await axios.post(`/auth/login`, {
                 username: username.trim(),
                 password
             })
             setError('')
             setPassword('')
             setUsername('')
-            AsyncStorage.setItem('token', response.data.token)
+            await AsyncStorage.setItem('token', response.data.token)
             navigation.navigate('Main')
             SetLoader(false)
         }
@@ -62,7 +62,7 @@ const LoginScreen = () => {
                         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
 
                             <View className="flex relative flex-col items-center gap-4" >
-                                <View className='h-[60px] flex relative flex-row py-4 bg-white rounded-[25px] overflow-hidden' style={{ width: wp(70) }}>
+                                <View className='h-[60px] flex relative flex-row items-center bg-white rounded-[25px] overflow-hidden' style={{ width: wp(70) }}>
                                     <View className='absolute z-[10]  flex items-center mt-4 justify-center flex-col  w-[80px] h-full' >
                                         <UserCircleIcon size={40} color={'black'} />
                                         <Text className='text-[9px] font-extrabold uppercase tracking-widest'>username</Text>
@@ -73,11 +73,11 @@ const LoginScreen = () => {
                                         returnKeyType="next"
                                         onSubmitEditing={() => passwordInput.focus()}
                                         blurOnSubmit={false}
-                                        className=" rounded-md   h-full pl-[60px]  pr-[25px] w-full"
+                                        className=" rounded-md  h-full pl-[60px]  pr-[25px] w-full"
                                     />
                                 </View>
 
-                                <View className=' h-[60px] flex relative flex-row py-4 bg-white rounded-[25px] overflow-hidden' style={{ width: wp(70) }}>
+                                <View className=' h-[60px] flex relative flex-row items-center bg-white rounded-[25px] overflow-hidden' style={{ width: wp(70) }}>
                                     <View className='absolute z-[10]  flex items-center mt-4 justify-center flex-col  w-[80px] h-full' >
                                         <LockClosedIcon size={40} color={'black'} />
                                         <Text className='text-[9px] font-extrabold uppercase tracking-widest'>password</Text>
@@ -91,7 +91,7 @@ const LoginScreen = () => {
                                         onChangeText={(e) => setPassword(e)}
                                         returnKeyType="go"
                                         onSubmitEditing={() => handleLogin()}
-                                        className=" rounded-md   h-full pl-[60px]  pr-[25px] w-full"
+                                        className=" rounded-md  h-[60px] pl-[60px]  pr-[25px] w-full"
                                     />
                                 </View>
 
@@ -121,7 +121,7 @@ const LoginScreen = () => {
 
                         <View className='flex flex-row items-center w-full justify-center mt-[20px]'>
                             <Text className='flex text-center flex-row items-center ' style={{ width: wp(90) }}>
-                                <Text className="font-semibold text-white flex justify-center tracking-wider">YOU DON'T HAVE AN ACCOUNT?</Text>
+                                <Text className="font-semibold text-neutral-300 flex justify-center tracking-wider">YOU DON'T HAVE AN ACCOUNT?</Text>
                                 <Text className='font-bold text-white h-full flex justify-center tracking-wider '>
                                     <Text onPress={() => navigation.navigate('Register')} className='font-extrabold text-white flex justify-center tracking-wider'> SIGN UP</Text>
                                 </Text>

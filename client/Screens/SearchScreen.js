@@ -23,7 +23,7 @@ const SearchScreen = () => {
 
     const fetchMoviesRepository = async () => {
         try {
-            const moviesData = await axios.get('http://192.168.1.198:3011/movie/getAllMovies')
+            const moviesData = await axios.get(`/movie/getAllMovies`)
             dispatch(setRepository(moviesData.data))
             setSearchMovies(moviesData.data)
         }
@@ -62,7 +62,7 @@ const SearchScreen = () => {
                 </Text>
             </View>
             <ScrollView showsVerticalScrollIndicator={false} >
-                <View style={{ marginTop: 10, gap: 10, marginHorizontal: wp(3), fontSize: 14, width: '100%', paddingLeft: 12, flexDirection: 'row', flexWrap: 'wrap' }}>
+                <View style={{ marginTop: 10, gap: 10, fontSize: 14, width: '100%',justifyContent:'center', flexDirection: 'row', flexWrap: 'wrap' }}>
                     {
 
                         searchMovies?.map((item) => (
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     },
     card: {
         overflow: 'hidden',
-        marginBottom: 37,
+        marginBottom: 20,
     },
     filmName: {
         color: 'rgba(255,255,255,0.9)',

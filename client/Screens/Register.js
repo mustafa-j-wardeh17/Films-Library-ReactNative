@@ -27,7 +27,7 @@ const RegisterScreen = () => {
   const handleRegister = async () => {
     try {
       SetLoader(true)
-      const response = await axios.post('http://192.168.1.198:3011/auth/register', {
+      const response = await axios.post(`/auth/register`, {
         username: username.trim(),
         email: email.toLowerCase().trim(),
         password,
@@ -62,7 +62,7 @@ const RegisterScreen = () => {
           colors={['#a39600', '#131313']}
           start={{ x: 1, y: 0 }}
           end={{ x: 0, y: 1 }}
-          locations={[0, 0.48]}
+          locations={[0, 0.48]} // Adjust the stops here
         >
           <View
             style={{ top: hp(0) }}
@@ -79,7 +79,7 @@ const RegisterScreen = () => {
               onPress={() => Keyboard.dismiss()}>
 
               <View className="flex relative flex-col items-center gap-2" >
-                <View className='h-[50px] items-center flex relative flex-row py-4 bg-white rounded-[25px] overflow-hidden' style={{ width: wp(70) }}>
+                <View className='h-[50px] items-center flex relative flex-row  bg-white rounded-[25px] overflow-hidden' style={{ width: wp(70) }}>
                   <View className='absolute z-[10]  flex items-center mt-4 justify-center flex-col  ml-2 h-full' >
                     <UserCircleIcon size={40} color={'black'} />
                   </View>
@@ -93,7 +93,7 @@ const RegisterScreen = () => {
                     className=" rounded-md   h-full pl-[60px]  pr-[25px] w-full"
                   />
                 </View>
-                <View className='h-[50px] items-center flex relative flex-row py-4 bg-white rounded-[25px] overflow-hidden' style={{ width: wp(70) }}>
+                <View className='h-[50px] items-center flex relative flex-row  bg-white rounded-[25px] overflow-hidden' style={{ width: wp(70) }}>
                   <View className='absolute z-[10]  flex items-center mt-4 justify-center flex-col  ml-2 h-full' >
                     <UserCircleIcon size={40} color={'black'} />
                   </View>
@@ -109,7 +109,7 @@ const RegisterScreen = () => {
                   />
                 </View>
 
-                <View className=' h-[50px] items-center flex relative flex-row py-4 bg-white rounded-[25px] overflow-hidden' style={{ width: wp(70) }}>
+                <View className=' h-[50px] items-center flex relative flex-row  bg-white rounded-[25px] overflow-hidden' style={{ width: wp(70) }}>
                   <View className='absolute z-[10]  flex items-center mt-4 justify-center flex-col ml-2 h-full' >
                     <LockClosedIcon size={40} color={'black'} />
                   </View>
@@ -125,7 +125,7 @@ const RegisterScreen = () => {
                   />
                 </View>
 
-                <View className=' h-[50px] items-center flex relative flex-row py-4 bg-white rounded-[25px] overflow-hidden' style={{ width: wp(70) }}>
+                <View className=' h-[50px] items-center flex relative flex-row  bg-white rounded-[25px] overflow-hidden' style={{ width: wp(70) }}>
                   <View className='absolute z-[10]  flex items-center mt-4 justify-center flex-col  ml-2 h-full' >
                     <LockClosedIcon size={40} color={'black'} />
                   </View>
@@ -156,10 +156,10 @@ const RegisterScreen = () => {
             <View className='flex flex-row justify-center  w-full rounded-full my-3'>
               <TouchableOpacity onPress={() => handleRegister()}
                 style={{ marginTop: hp(1), width: wp(50) }}
-                className=' rounded-full  font-bold  shadow-md  shadow-[#1d3020] py-3 px-4 mb-2 flex flex-row justify-center items-center bg-[#161c0e]'
+                className=' rounded-full h-[60px] font-bold  shadow-md  shadow-[#383729] flex flex-row justify-center items-center bg-[#4a4a45]'
               >
 
-                <Text className="text-gray-50 text-4xl tracking-widest font-bold">Register</Text>
+                <Text className="text-gray-50 text-3xl tracking-widest font-bold">Register</Text>
 
 
               </TouchableOpacity>
@@ -167,7 +167,7 @@ const RegisterScreen = () => {
 
             <View className='flex flex-row items-center w-full justify-center '>
               <Text className='flex text-center flex-row items-center ' style={{ width: wp(90) }}>
-                <Text className="font-semibold text-white flex justify-center tracking-wider">ALLREADY HAVE AN ACCOUNT?</Text>
+                <Text className="font-semibold text-neutral-300 flex justify-center tracking-wider">ALLREADY HAVE AN ACCOUNT?</Text>
                 <Text className='font-bold text-white h-full flex justify-center tracking-wider '>
                   <Text onPress={() => navigation.navigate('Login')} className='font-extrabold text-white flex justify-center tracking-wider'> LOGIN</Text>
                 </Text>
