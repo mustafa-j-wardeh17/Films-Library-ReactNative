@@ -1,5 +1,5 @@
 # IMDb Mobile Application
-<div style="display: flex; flex-wrap: wrap;gap:30px ;justify-content: space-around;">
+<div style="display: flex; flex-wrap: wrap;gap:130px ;justify-content: space-around;">
     <img src="https://res.cloudinary.com/dsos2uuov/image/upload/v1703008824/IMDb%20Project%20Image%20Done/6_b4pwmt.jpg" alt="Login Page" width="320" height="600" />
     <img src="https://res.cloudinary.com/dsos2uuov/image/upload/v1703008824/IMDb%20Project%20Image%20Done/6_b4pwmt.jpg" alt="Register Page" width="320" height="600" />
     <img src="https://res.cloudinary.com/dsos2uuov/image/upload/v1703008823/IMDb%20Project%20Image%20Done/3_kzxa20.jpg" alt="Main Page" width="320" height="600" />
