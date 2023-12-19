@@ -2,10 +2,10 @@
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
     <img src="https://res.cloudinary.com/dsos2uuov/image/upload/v1703008824/IMDb%20Project%20Image%20Done/6_b4pwmt.jpg" alt="Login Page" width="320" height="600" />
     <img src="https://res.cloudinary.com/dsos2uuov/image/upload/v1703008824/IMDb%20Project%20Image%20Done/6_b4pwmt.jpg" alt="Register Page" width="320" height="600" />
-    <img src="https://res.cloudinary.com/dsos2uuov/image/upload/v1703008824/IMDb%20Project%20Image%20Done/6_b4pwmt.jpg" alt="Main Page" width="320" height="600" />
-    <img src="https://res.cloudinary.com/dsos2uuov/image/upload/v1703008824/IMDb%20Project%20Image%20Done/6_b4pwmt.jpg" alt="Search Page" width="320" height="600" />
-    <img src="https://res.cloudinary.com/dsos2uuov/image/upload/v1703008824/IMDb%20Project%20Image%20Done/6_b4pwmt.jpg" alt="Movie Page" width="320" height="600" />
-    <img src="https://res.cloudinary.com/dsos2uuov/image/upload/v1703008824/IMDb%20Project%20Image%20Done/6_b4pwmt.jpg" alt="Cast Page" width="320" height="600" />
+    <img src="https://res.cloudinary.com/dsos2uuov/image/upload/v1703008823/IMDb%20Project%20Image%20Done/3_kzxa20.jpg" alt="Main Page" width="320" height="600" />
+    <img src="https://res.cloudinary.com/dsos2uuov/image/upload/v1703008834/IMDb%20Project%20Image%20Done/5_x5bfj0.jpg" alt="Search Page" width="320" height="600" />
+    <img src="https://res.cloudinary.com/dsos2uuov/image/upload/v1703008836/IMDb%20Project%20Image%20Done/2_xqeztl.jpg" alt="Movie Page" width="320" height="600" />
+    <img src="https://res.cloudinary.com/dsos2uuov/image/upload/v1703008836/IMDb%20Project%20Image%20Done/1_q3wk66.jpg" alt="Cast Page" width="320" height="600" />
 </div>
 
 
