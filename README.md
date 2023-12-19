@@ -1,16 +1,13 @@
 # IMDb Mobile Application
-<img src="https://res.cloudinary.com/dsos2uuov/image/upload/v1703008824/IMDb%20Project%20Image%20Done/6_b4pwmt.jpg" alt="Project Image 1" width="320" height="600" />
-*Login Page*
-<img src="https://res.cloudinary.com/dsos2uuov/image/upload/v1703008824/IMDb%20Project%20Image%20Done/6_b4pwmt.jpg" alt="Project Image 1" width="320" height="600" />
-*Register Page*
-<img src="https://res.cloudinary.com/dsos2uuov/image/upload/v1703008824/IMDb%20Project%20Image%20Done/6_b4pwmt.jpg" alt="Project Image 1" width="320" height="600" />
-*Main Page*
-<img src="https://res.cloudinary.com/dsos2uuov/image/upload/v1703008824/IMDb%20Project%20Image%20Done/6_b4pwmt.jpg" alt="Project Image 1" width="320" height="600" />
-*Search Page*
-<img src="https://res.cloudinary.com/dsos2uuov/image/upload/v1703008824/IMDb%20Project%20Image%20Done/6_b4pwmt.jpg" alt="Project Image 1" width="320" height="600" />
-*Movie Page*
-<img src="https://res.cloudinary.com/dsos2uuov/image/upload/v1703008824/IMDb%20Project%20Image%20Done/6_b4pwmt.jpg" alt="Project Image 1" width="320" height="600" />
-*Cast Page*
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+    <img src="https://res.cloudinary.com/dsos2uuov/image/upload/v1703008824/IMDb%20Project%20Image%20Done/6_b4pwmt.jpg" alt="Login Page" width="320" height="600" />
+    <img src="https://res.cloudinary.com/dsos2uuov/image/upload/v1703008824/IMDb%20Project%20Image%20Done/6_b4pwmt.jpg" alt="Register Page" width="320" height="600" />
+    <img src="https://res.cloudinary.com/dsos2uuov/image/upload/v1703008824/IMDb%20Project%20Image%20Done/6_b4pwmt.jpg" alt="Main Page" width="320" height="600" />
+    <img src="https://res.cloudinary.com/dsos2uuov/image/upload/v1703008824/IMDb%20Project%20Image%20Done/6_b4pwmt.jpg" alt="Search Page" width="320" height="600" />
+    <img src="https://res.cloudinary.com/dsos2uuov/image/upload/v1703008824/IMDb%20Project%20Image%20Done/6_b4pwmt.jpg" alt="Movie Page" width="320" height="600" />
+    <img src="https://res.cloudinary.com/dsos2uuov/image/upload/v1703008824/IMDb%20Project%20Image%20Done/6_b4pwmt.jpg" alt="Cast Page" width="320" height="600" />
+</div>
+
 
 
 ## Overview
