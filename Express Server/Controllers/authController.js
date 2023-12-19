@@ -8,14 +8,19 @@ dotenv.config()
 
 
 export const register = asyncHandler(async (req, res) => {
-    const { username, email, password } = req.body;
+    const { username, email, password,confirmPassword } = req.body;
+
+    if(confirmPassword !== password){
+        return res.status(400).send({message: "Passwords do not match"})
+    }
+
     // Validate user input
     const { error } = RegisterValidation(req.body)
     if (error) {
         return res.status(400).json({ err: error.details[0].message })
     }
     //check if user already exists
-    const findUser = await User.find({ email })
+    const findUser = await User.findOne({ email })
 
     if (findUser) {
         return res.status(400).json({ err: 'Email allready exist' })
@@ -74,6 +79,7 @@ const RegisterValidation = (data) => {
         username: Joi.string().min(5).trim().required().regex(/^[a-zA-Z0-9]+$/),
         email: Joi.string().email().trim().required(),
         password: Joi.string().min(8).required().regex(/^(?=.*[A-Z])/),
+        confirmPassword: Joi.string().min(8).required().regex(/^(?=.*[A-Z])/),
     });
 
     return registerSchema.validate(data);

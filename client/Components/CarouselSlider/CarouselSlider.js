@@ -1,50 +1,45 @@
-import { View, Text, StyleSheet, Dimensions, TouchableWithoutFeedback, Image } from 'react-native'; // Import Image from 'react-native'
-import { useNavigation } from '@react-navigation/native';
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import Carousel from 'react-native-snap-carousel';
 
-export default function CarouselSlider({data}) {
-    const navigation = useNavigation();
-    var { width, height } = Dimensions.get('window');
+const MyCarousel = () => {
+  const data = [
+    { title: 'Item 1' },
+    { title: 'Item 2' },
+    { title: 'Item 3' },
+    { title: 'Item 4' },
+    { title: 'Item 5' },
+  ];
 
-    const arr = [1, 2, 3, 4]
+  const renderItem = ({ item }) => (
+    <View style={styles.item}>
+      <Text style={styles.title}>{item.title}</Text>
+    </View>
+  );
 
-    const handleClick = () => {
-        navigation.navigate('Movie');
-    };
-    return (
-        <View style={{ flex: 1 }}>
-            <View style={styles.ListHeader}>
-                <Text style={styles.TextStyle}>Trending</Text>
-            </View>
-
-        </View>
-    );
-}
-
-const MovieCard = ({ handleClick }) => {
-    return (
-        <TouchableWithoutFeedback onPress={() => handleClick()}>
-            <Image
-                source={require('../../assets/snap.jpg')}
-                style={styles.cardImage}
-            />
-        </TouchableWithoutFeedback>
-    );
-}
+  return (
+    <Carousel
+      data={data}
+      renderItem={renderItem}
+      sliderWidth={300}
+      itemWidth={300}
+      layout="default"
+    />
+  );
+};
 
 const styles = StyleSheet.create({
-    ListHeader: {
-        flexDirection: "row",
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: 12,
-        marginLeft: 15
-    },
-    TextStyle: {
-        color: 'white',
-        fontSize: 18
-    },
-    cardImage: {
-        width: '100%',
-        height: 200,
-    }
+  item: {
+    backgroundColor: 'lightblue',
+    borderRadius: 5,
+    height: 200,
+    padding: 20,
+    marginLeft: 25,
+    marginRight: 25,
+  },
+  title: {
+    fontSize: 18,
+  },
 });
+
+export default MyCarousel;

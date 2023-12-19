@@ -58,7 +58,7 @@ const MovieList = ({ seeAll, data, category }) => {
                         >
                             <View className='shadow w-full'>
                                 <Image
-                                    style={{ height: seeAll ? hp(20) : hp(35), borderRadius: wp(4), overflow: 'hidden' }}
+                                    style={{ height: seeAll ? hp(20) : wp(60), borderRadius: wp(4), overflow: 'hidden' }}
                                     source={{ uri: movie.cover.url }}
                                     className='w-full'
                                     resizeMode='stretch'
